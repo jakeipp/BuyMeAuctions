@@ -1,0 +1,441 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+
+:root {
+    --background: rgba(0, 219, 196, .85);
+    --dark_accent: #3B6B66;
+}
+
+body {
+    margin: 0;
+    background: #222;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 800;
+}
+
+.content {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    padding-right: 5%;
+    padding-left: 5%;
+    background-color: #FFF;
+    display: flex;
+    min-width: 60%;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+
+
+header {
+    background: var(--background);
+    text-align: center;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+header h1 a {
+    color: var(--dark_accent);
+    text-decoration: none;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+nav {
+    position: relative;
+    text-align: left;
+    display: flex;
+    flex: 1 1 0;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 2rem;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+
+nav li {
+    margin-left: 3em;
+    display: flex;
+    height: 5rem;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    transition: opacity 150ms ease-in-out;
+}
+
+nav a::after {
+    content: '';
+    display: block;
+    height: 3px;
+    background: var(--dark_accent);
+    position: absolute;
+    bottom: -0.25em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+}
+
+nav a:hover::after {
+    transform: scale(1,1);
+}
+
+nav a:hover {
+    color: var(--dark_accent);
+}
+
+.nav-toggle:checked ~ nav {
+    transform: scale(1,1);
+}
+
+.nav-toggle:checked ~ nav a {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
+}
+
+.message {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subject {
+    color: #fff;
+}
+
+.message-content {
+    min-height: 0;
+    max-height: 0;
+    width: 85%;
+    overflow: auto;
+    transition: min-height 0.2s ease-out;
+}
+
+.messages-toggle {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+}
+
+.messages-container {
+	z-index: 50;
+    background: var(--background);
+    transform: scale(0, 1);
+    position: absolute;
+    width: 25%;
+    height: 50vh;
+    left: auto;
+    top: 5rem;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+
+.message h2 {
+    display: flex;
+}
+
+.msg-button {
+    right: 0;
+    width: 10ch;
+    height: min-content;
+}
+
+hr {
+    width: 90%;
+    color: var(--dark_accent);
+}
+
+.messages-toggle:checked ~ .messages-container{
+    transform: scale(1,1);
+}
+
+.logo {
+    flex: 0 1 0;
+    text-align: left;
+    margin-left: 2rem;
+}
+
+.messageCenter {
+    display: flex;
+}
+
+.dropdown-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 0;
+
+}
+
+.dropdown {
+	display: flex;
+    height: 5rem;
+    align-items: center;
+    position: relative;
+    font-size: 1.2em;
+}
+
+.dropdown-title {
+    color: #FFF;
+    border: none;
+}
+
+.dropdown-content {
+	z-index: 100;
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 5rem;
+    max-height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--background);
+    transition: max-height 0.15s ease-out;
+
+}
+
+.dropdown-item {
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+
+.dropdown-item::after {
+	content: none;
+}
+
+.dropdown:hover .dropdown-content {
+    max-height: 200px;
+    transition: max-height 0.15s ease-in;
+}
+
+.auctions {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 0.5rem;
+}
+
+.auctions li {
+    display: flex;
+    flex: 1 1 20rem;
+    flex-direction: column;
+}
+
+.auction {
+    padding: 0;
+    margin: 0;
+    background: #EEE;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+    border-bottom: none;
+}
+
+.auction div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 0.5rem;
+}
+
+.auction-desc {
+    max-height: 0;
+    overflow: auto;
+    border: 1px solid var(--dark_accent);
+    border-top: none;
+    display: flex;
+    gap: 2em;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.auction-desc span {
+    margin: 1rem;
+}
+
+.item-type {
+    background: var(--background);
+    padding: 0.5em;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.item-closed {
+    background: #EB312B;
+    padding: 0.5em;
+    border-radius: 10px;
+    text-transform: uppercase;
+    margin-left: 0.25em;
+}
+
+.item-title {
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #000;
+}
+
+.item-title:hover {
+    color: #666;
+}
+
+.item-price {
+    font-size: 1.5em;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: row;
+	background: #fff;
+}
+
+.filter-spacer {
+	padding-left: 5%;
+	flex: 1 0 15rem;
+	min-height: 80vh;
+	background: #fff;
+}
+
+.filter-pane {
+	height: 60vh;
+	width: 15rem;
+	background: var(--background);
+	position: fixed;
+	top: 6rem;
+	overflow: auto;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+}
+
+.filter-form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.filter-form select {
+	text-transform: capitalize;
+}
+
+.filter-form select option {
+	text-transform: capitalize;
+}
+
+.filter-form span {
+	text-transform: capitalize;
+}
+
+.auction-page {
+	padding-top: 2rem;
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 1rem;
+	
+}
+
+.auction-page div {
+	padding: 0.25rem;
+	display: flex;
+	flex: 0 1 30%;
+	flex-direction: column;
+	border: 2px solid #000;
+	justify-content: space-around;
+	align-items: center;
+	min-height: 4rem;
+}
+
+.auction-page span {
+	text-transform: capitalize;
+}
+
+.auction-page h3 {
+	text-transform: capitalize;
+	margin: 0;
+}
+
+.auction-page .title {
+	flex: 1 1 90% !important;
+}
+
+.auction-price {
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.bid-history {
+	min-width: 19rem;
+	padding: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	overflow: auto;
+	height: 20vh;
+	border: 1px solid #000;
+}
+
+.bid-history span {
+	flex: 0 0;
+}
+
+.type-selector {
+	flex-direction: row !important;
+}
+
+.type-selector button {
+	text-transform: capitalize;
+	border-radius: 3px;
+	font-size: 1em;
+	padding: 1em;
+}
+
+.type-selected {
+	border: 3px solid var(--dark_accent) !important;
+}
+
+.max-container {
+	display: none;
+}
+
+#isReccuring:checked + .max-container {
+	display: inline;
+}
+
